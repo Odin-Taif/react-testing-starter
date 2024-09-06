@@ -5,6 +5,7 @@ describe("UserList", () => {
   // no user if array is empty
   it("should render no user when users array is empty", () => {
     render(<UserList users={[]} />);
+
     expect(screen.getByText(/no users/i)).toBeInTheDocument();
   });
 
@@ -18,6 +19,7 @@ describe("UserList", () => {
 
     users.forEach((user) => {
       const link = screen.getByRole("link", { name: user.name });
+      
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute("href", `/users/${user.id}`);
     });
